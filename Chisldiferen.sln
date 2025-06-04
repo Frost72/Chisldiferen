@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chisldiferen", "Chisldiferen.csproj", "{30CC4529-54F2-4285-A8C3-0844FAD5DDCD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{30CC4529-54F2-4285-A8C3-0844FAD5DDCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30CC4529-54F2-4285-A8C3-0844FAD5DDCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30CC4529-54F2-4285-A8C3-0844FAD5DDCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30CC4529-54F2-4285-A8C3-0844FAD5DDCD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F8DA8F4C-650F-4160-9B8E-5395EC26A8CC}
+	EndGlobalSection
+EndGlobal
