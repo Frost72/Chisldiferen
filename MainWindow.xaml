@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Button Content="Левая разность" Name="LeftMethod" HorizontalAlignment="Left" Margin="129,37,0,0" VerticalAlignment="Top" Height="73" Width="169" Click="LeftMehtod_Click" RenderTransformOrigin="0.5,0.5">
+        </Button>
+        <Button Content="Правая разность" Name="RightMethod" HorizontalAlignment="Left" Margin="483,320,0,0" VerticalAlignment="Top" Height="74" Width="169" Click="RightMethod_Click"/>
+        <Button Content="Центральная разность" Name="CentreMethod" HorizontalAlignment="Left" Margin="484,37,0,0" VerticalAlignment="Top" Width="170" Height="73" Click="CentreMethod_Click"/>
+        <Button Content="Квадратичная интерполяция" Name="QuadricMethod" HorizontalAlignment="Left" Margin="129,133,0,0" VerticalAlignment="Top" Width="169" Height="73" Click="QuadricMethod_Click" RenderTransformOrigin="0.486,-0.249"/>
+        <Button Content="Кубическая интерполяция" Name="CubicMethod" HorizontalAlignment="Left" Margin="483,229,0,0" VerticalAlignment="Top" Height="73" Width="169" Click="CubicMethod_Click"/>
+        <Button Content="МНК" Name="MnkMethod" HorizontalAlignment="Left" Margin="484,133,0,0" VerticalAlignment="Top" Height="73" Width="169" Click="MnkMethod_Click"/>
+        <Button Content="Метод Рунге" Name="RungeMethod" HorizontalAlignment="Left" Margin="129,229,0,0" VerticalAlignment="Top" Height="73" Width="169" Click="RungeMethod_Click"/>
+        <Button Content="многочлен Ньютона" Name="NutonMethod" HorizontalAlignment="Left" Margin="129,320,0,0" VerticalAlignment="Top" Height="72" Width="169" Click="NutonMethod_Click"/>
+
 
     </Grid>
 </Window>
