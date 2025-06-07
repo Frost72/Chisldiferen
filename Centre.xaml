@@ -7,6 +7,27 @@
         mc:Ignorable="d"
         Title="Centre" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Ввод данных -->
+        <GroupBox Header="Введите точки (x y), по одной на строку">
+            <TextBox x:Name="InputTextBox" AcceptsReturn="True" Height="100" VerticalScrollBarVisibility="Auto"/>
+        </GroupBox>
+
+        <!-- Результаты -->
+        <DataGrid x:Name="ResultDataGrid" Grid.Row="1" AutoGenerateColumns="False" Margin="0,5">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="x" Binding="{Binding X}" />
+                <DataGridTextColumn Header="y" Binding="{Binding Y}" />
+                <DataGridTextColumn Header="Производная (центр.)" Binding="{Binding Derivative}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Кнопка -->
+        <Button Content="Вычислить" Grid.Row="2" Click="CalculateButton_Click" Width="150" HorizontalAlignment="Left"/>
     </Grid>
 </Window>
