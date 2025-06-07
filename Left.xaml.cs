@@ -19,6 +19,7 @@ namespace Chisldiferen
     /// </summary>
     public partial class Left : Window
     {
+
         public Left()
         {
             InitializeComponent();
