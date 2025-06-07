@@ -19,9 +19,11 @@ namespace Chisldiferen
     /// </summary>
     public partial class Cubic : Window
     {
+        private List<PointData> points = new List<PointData>();
         public Cubic()
         {
             InitializeComponent();
         }
+
     }
 }
