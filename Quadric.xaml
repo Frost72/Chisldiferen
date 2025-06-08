@@ -10,33 +10,29 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Ввод точки -->
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Text="X:" VerticalAlignment="Center" Margin="0,0,5,0"/>
-            <TextBox x:Name="txtX" Width="80" Margin="0,0,10,0"/>
-            <TextBlock Text="Y:" VerticalAlignment="Center" Margin="0,0,5,0"/>
-            <TextBox x:Name="txtY" Width="80" Margin="0,0,10,0"/>
-            <Button Content="Добавить" Click="BtnAddPoint_Click" Width="80"/>
+        <!-- Панель ввода точки -->
+        <StackPanel Orientation="Horizontal" Margin="0,5">
+            <TextBox x:Name="txtX" Width="80"  Margin="0,5"/>
+            <TextBox x:Name="txtY" Width="80"  Margin="0,5"/>
+            <Button Content="Добавить точку" Click="BtnAddPoint_Click" Width="120" Margin="10,5"/>
+            <Button Content="Рассчитать производную" Click="BtnCalculate_Click" Width="140" Margin="10,5"/>
+            <Button Content="Очистить" Click="BtnClear_Click" Width="100" Margin="10,5"/>
         </StackPanel>
 
-        <!-- Список точек -->
-        <GroupBox Grid.Row="1" Header="Введенные точки">
-            <ListBox x:Name="lstPoints" Height="120" DisplayMemberPath="ToString"/>
+        <!-- Отображение введённых точек -->
+        <GroupBox Grid.Row="1" Header="Введенные точки" Margin="0,10">
+            <ListBox x:Name="lstPoints" Height="150"/>
         </GroupBox>
 
-        <!-- Кнопки -->
-        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,10,0,0">
-            <Button Content="Рассчитать производные" Click="BtnCalculate_Click" Width="160"/>
-            <Button Content="Очистить" Click="BtnClear_Click" Width="100" Margin="10,0"/>
-        </StackPanel>
-
-        <!-- Результаты производных -->
-        <GroupBox Grid.Row="3" Header="Производные (квадратичная интерполяция)">
-            <ListBox x:Name="lstDerivatives" DisplayMemberPath="ToString"/>
+        <!-- Результаты дифференцирования -->
+        <GroupBox Grid.Row="2" Header="Результаты вычисления производной" Margin="0,10">
+            <TextBlock x:Name="txtResult"
+                       FontSize="16"
+                       Padding="5"
+                      />
         </GroupBox>
     </Grid>
 </Window>

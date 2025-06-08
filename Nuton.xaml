@@ -7,6 +7,33 @@
         mc:Ignorable="d"
         Title="Nuton" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Ввод точки -->
+        <StackPanel Orientation="Horizontal" Margin="0,5">
+            <TextBox x:Name="txtX" Width="80"  Margin="0,5"/>
+            <TextBox x:Name="txtY" Width="80"  Margin="0,5"/>
+            <Button Content="Добавить точку" Click="BtnAddPoint_Click" Width="120" Margin="10,5"/>
+            <TextBox x:Name="txtXTarget" Width="80" Text="1.5" Margin="10,5"/>
+            <Button Content="Рассчитать производную" Click="BtnCalculate_Click" Width="160" Margin="10,5"/>
+            <Button Content="Очистить" Click="BtnClear_Click" Width="80" Margin="10,5"/>
+        </StackPanel>
+
+        <!-- Отображение точек -->
+        <GroupBox Grid.Row="1" Header="Введенные точки" Margin="0,10">
+            <ListBox x:Name="lstPoints" Height="150"/>
+        </GroupBox>
+
+        <!-- Результат -->
+        <GroupBox Grid.Row="2" Header="Результат вычисления производной" Margin="0,10">
+            <TextBlock x:Name="txtResult"
+                       FontSize="16"
+                       Padding="5"
+                       Text="Здесь будет результат после расчёта"/>
+        </GroupBox>
     </Grid>
 </Window>

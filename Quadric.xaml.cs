@@ -20,6 +20,7 @@ namespace Chisldiferen
     public partial class Quadric : Window
     {
         private List<MyPointData> points = new List<MyPointData>();
+        private double xTarget;
         public Quadric()
         {
             InitializeComponent();
@@ -27,37 +28,30 @@ namespace Chisldiferen
 
         private void BtnAddPoint_Click(object sender, RoutedEventArgs e)
         {
-            if (double.TryParse(txtX.Text, out double x) && double.TryParse(txtY.Text, out double y))
+            if (!double.TryParse(txtX.Text, out double x) ||
+                !double.TryParse(txtY.Text, out double y))
             {
-                var point = new MyPointData { X = x, Y = y };
-                points.Add(point);
-                lstPoints.Items.Add(point);
-                txtX.Clear();
-                txtY.Clear();
+                MessageBox.Show("Введите корректные значения X и Y");
+                return;
             }
-            else
-            {
-                MessageBox.Show("Введите корректные числа для X и Y.");
-            }
+
+            var point = new MyPointData { X = x, Y = y };
+            points.Add(point);
+            lstPoints.Items.Add(point);
+
+            txtX.Clear();
+            txtY.Clear();
         }
 
         private void BtnCalculate_Click(object sender, RoutedEventArgs e)
         {
             if (points.Count < 3)
             {
-                MessageBox.Show("Для квадратичной интерполяции нужно минимум 3 точки");
+                MessageBox.Show("Для квадратичной интерполяции необходимо минимум 3 точки.");
                 return;
             }
 
             var sortedPoints = points.OrderBy(p => p.X).ToList();
-
-            // Очищаем предыдущие значения производных
-            foreach (var point in points)
-            {
-                point.Derivative = "—";
-            }
-
-            var derivativeList = new List<MyPointData>();
 
             for (int i = 0; i < sortedPoints.Count - 2; i++)
             {
@@ -65,32 +59,35 @@ namespace Chisldiferen
                 var p1 = sortedPoints[i + 1];
                 var p2 = sortedPoints[i + 2];
 
-                double[,] matrix = {
-                    { p0.X * p0.X, p0.X, 1, p0.Y },
-                    { p1.X * p1.X, p1.X, 1, p1.Y },
-                    { p2.X * p2.X, p2.X, 1, p2.Y }
+                double[,] matrix = new double[,]
+                {
+            { p0.X * p0.X, p0.X, 1, p0.Y },
+            { p1.X * p1.X, p1.X, 1, p1.Y },
+            { p2.X * p2.X, p2.X, 1, p2.Y }
                 };
 
-                if (!SolveSystem(matrix, out double a, out double b, out _))
+                if (SolveSystem(matrix, out double a, out double b, out _))
                 {
-                    continue;
+                    p1.Derivative = (2 * a * p1.X + b).ToString("F4");
                 }
-
-                double derivative = 2 * a * p1.X + b;
-                p1.Derivative = derivative.ToString("F4");
-                derivativeList.Add(p1);
+                else
+                {
+                    p1.Derivative = "Ошибка";
+                }
             }
 
-            lstPoints.Items.Refresh(); // Обновляем список точек
-            lstDerivatives.ItemsSource = null;
-            lstDerivatives.ItemsSource = derivativeList; // Отображаем только точки с производной
+            // Очищаем и заново выводим все точки с новыми значениями производных
+            lstPoints.Items.Clear();
+            foreach (var point in points)
+            {
+                lstPoints.Items.Add(point.ToString());
+            }
         }
 
         private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
             points.Clear();
             lstPoints.Items.Clear();
-            lstDerivatives.ItemsSource = null;
         }
         private bool SolveSystem(double[,] matrix, out double a, out double b, out double c)
         {
