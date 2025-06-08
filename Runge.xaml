@@ -5,8 +5,61 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chisldiferen"
         mc:Ignorable="d"
-        Title="Runge" Height="450" Width="800">
-    <Grid>
-        
+        Title="Runge" Height="800" Width="1000">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Ввод точек -->
+        <GroupBox Grid.Row="0" Header="Введите точки функции (x y), по одной на строку" Margin="0,5">
+            <TextBox x:Name="txtInputPoints"
+         AcceptsReturn="True"
+         VerticalScrollBarVisibility="Auto"
+         Height="120"
+         TextWrapping="Wrap"
+         ToolTip="Формат:\nкаждая пара на новой строке\nпример:\n0.8 0.512\n0.9 0.729\n1.0 1.000"/>
+        </GroupBox>
+
+        <!-- Настройки метода -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="50,0,64,10">
+            <TextBlock Text="x для производной:" VerticalAlignment="Center" Margin="0,5"/>
+            <TextBox x:Name="txtXTarget" Width="80" Text="1.0" 
+                     TextChanged="OnNumericTextBox_TextChanged" Margin="0,5"/>
+
+            <TextBlock Text="Шаг h:" VerticalAlignment="Center" Margin="20,5"/>
+            <TextBox x:Name="txtH" Width="80" Text="0.1" 
+                      TextChanged="OnNumericTextBox_TextChanged" Margin="0,5"/>
+
+            <TextBlock Text="Множитель k:" VerticalAlignment="Center" Margin="20,5"/>
+            <TextBox x:Name="txtK" Width="60" Text="2" 
+                      TextChanged="OnNumericTextBox_TextChanged" Margin="0,5"/>
+
+            <TextBlock Text="Порядок p:" VerticalAlignment="Center" Margin="20,5"/>
+            <TextBox x:Name="txtP" Width="60" Text="1" 
+                      TextChanged="OnNumericTextBox_TextChanged" Margin="0,5"/>
+
+            <Button Content="Рассчитать производную" Click="CalculateDerivative_Click" Width="160" Margin="20,5"/>
+        </StackPanel>
+
+        <!-- Отображение точек -->
+        <GroupBox Grid.Row="2" Header="Введенные точки" Margin="0,5">
+            <ListBox x:Name="lstPoints" Height="100"/>
+        </GroupBox>
+
+        <!-- Информация о шаге -->
+        <TextBlock x:Name="txtStep" Grid.Row="3" FontSize="14" Margin="0,5"/>
+
+        <!-- Результат -->
+        <GroupBox Grid.Row="4" Header="Результат вычисления производной" Margin="0,5">
+            <TextBlock x:Name="txtResult"
+                       FontSize="14"
+                       Padding="5"
+                       Text="Здесь будет результат после расчёта" Height="395"/>
+        </GroupBox>
+
     </Grid>
 </Window>

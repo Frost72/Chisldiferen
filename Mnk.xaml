@@ -5,8 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chisldiferen"
         mc:Ignorable="d"
-        Title="Mnk" Height="450" Width="800">
-    <Grid>
-        
+        Title="Mnk" Height="550" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Ввод точек -->
+        <GroupBox Grid.Row="0" Header="Введите точки функции (x y), по одной на строку" Margin="0,5">
+            <TextBox x:Name="txtInputPoints"
+                     AcceptsReturn="True"
+                     VerticalScrollBarVisibility="Auto"
+                     Height="120"
+                     TextWrapping="Wrap"
+                     ToolTip="Формат:\nкаждая пара на новой строке\nпример:\n0 0\n1 1\n2 4\n3 9" />
+        </GroupBox>
+
+        <!-- Кнопки управления -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,5">
+            <Button Content="Добавить точки" Click="AddPoints_Click" Width="120" Margin="0,5"/>
+            <TextBlock Text="x для производной:" VerticalAlignment="Center" Margin="20,0,10,0"/>
+            <TextBox x:Name="txtDerivativeX" Width="80" Text="1.5" Margin="0,5"/>
+            <Button Content="Рассчитать производную" Click="CalculateDerivative_Click" Width="180" Margin="20,5"/>
+        </StackPanel>
+
+        <!-- Отображение точек -->
+        <GroupBox Grid.Row="2" Header="Введенные точки" Margin="0,5">
+            <ListBox x:Name="lstPoints" Height="100"/>
+        </GroupBox>
+
+        <!-- Информация о шаге -->
+        <TextBlock x:Name="txtStep" Grid.Row="3" FontSize="14" Margin="0,5"/>
+
+        <!-- Результат -->
+        <GroupBox Grid.Row="4" Header="Результат вычисления производной" Margin="0,5">
+            <TextBlock x:Name="txtResult"
+                       FontSize="16"
+                       Padding="5"
+                       Text="Здесь будет результат после расчёта"/>
+        </GroupBox>
     </Grid>
 </Window>
